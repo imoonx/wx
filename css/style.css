@@ -59,6 +59,7 @@
     justify-content: center;
     overflow: hidden;
     margin-top: 10px;
+    -webkit-animation:rotateImg 4s linear infinite;
 }
 
 @keyframes rotateImg {
@@ -73,6 +74,5 @@
   
 
 .header img:hover {
-    transform: rotateZ(1080deg);
-    -webkit-animation:rotateImg 1.5s linear infinite;
+    -webkit-animation:rotateImg 1s linear infinite;
 }
