@@ -1,0 +1,78 @@
+.bg-white {
+    background-color: #fff !important;
+}
+
+.bg-grey {
+    background-color: #fbfdff !important;
+}
+
+.bg-deepgrey {
+    background-color: rgba(0, 0, 0, .5) !important;
+}
+
+.bg-blue {
+    background-color: #6fa3ef !important;
+}
+
+.bg-purple {
+    background-color: #bc99c4 !important;
+}
+
+.bg-green {
+    background-color: #46c47c !important;
+}
+
+.bg-yellow {
+    background-color: #f9bb3c !important;
+}
+
+.bg-red {
+    background-color: #e8583d !important;
+}
+
+.bg-orange {
+    background-color: #f68e5f !important;
+}
+
+.header {
+    line-height: 78px;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    padding: 0;
+    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+    -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+.header img {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+@keyframes rotateImg {
+    0% {transform : rotate(0deg);}
+    100% {transform : rotate(360deg);}
+  }
+  
+  @-webkit-keyframes rotateImg {
+      0%{-webkit-transform : rotate(0deg);}
+    100%{-webkit-transform : rotate(360deg);}
+  }
+  
+
+.header img:hover {
+    transform: rotateZ(1080deg);
+    -webkit-animation:rotateImg 1.5s linear infinite;
+}
