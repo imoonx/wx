@@ -11,9 +11,9 @@
 
 <body style="background: #f0f0f0">
 
-    <video src="music/그말(inst.)-Alive.mp3" hidden="true" autoplay></video>
+    <video id="bg-music" src="music/그말(inst.)-Alive.mp3" hidden="true" autoplay></video>
 
-    <div class="header bg-white">
+    <div class="header bg-white" onclick="playMusic()">
         <img src="img/header.jpg" />
         <svg id="ice-bear" xmlns="http://www.w3.org/2000/svg" version="1.1" width="80%" height="200%" viewBox="0 0 800 400">
             <g id="welcom-text" style="text-shadow: 1px 1px #EFEFEF, 2px 2px #ccc">
@@ -69,6 +69,24 @@
 
     <script src="js/jquery-3.3.1.js "></script>
     <script src="js/bootstrap.js "></script>
+
+    <script>
+        $(function () {
+            var audio = document.getElementById("bg-music");
+            audio.play();
+        })
+
+        function playMusic() {
+            var audio = document.getElementById("bg-music");
+            //播放
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+    </script>
+
 </body>
 
 </html>
