@@ -30,13 +30,13 @@
 
     <img id="operaMusic" src="img/play.svg" onclick="playMusic()">
 
-    <div class="container main-content" style="margin-top: 100px;">
+    <div class="container content">
 
         <div class="row">
             <div class="col-sm-4 columns">
                 <div class="columns-item">
                     <!-- top -->
-                    <div class="item-thumb" style="background: white;"></div>
+                    <div class="item-thumb bg-white"></div>
 
                     <div class="item-desc">
                         <p>最讨厌的雨天</p>
@@ -46,9 +46,9 @@
                         <p>最讨厌的雨天</p>
                     </div>
 
-                    <div class="item-slant reverse-slant bg- "></div>
+                    <div class="item-slant reverse-slant bg-white"></div>
 
-                    <div class="item-slant ">
+                    <div class="item-slant">
                         <div class="liberxue-title">
                             音乐
                         </div>
@@ -59,19 +59,17 @@
                             <a href="html/rain.html">雨天-戚薇</a>
                         </div>
                         <div class="columns-item-bottom-time">
-                            <a data-hover="2017-07-30 10:06 ">2017-07-30 10:06</a>
+                            <a href="" data-hover="2017-07-30 10:06">2017-07-30 10:06</a>
                             <img src="img/music.png" />
                         </div>
                     </div>
 
                 </div>
             </div>
-
-
             <div class="col-sm-4 columns">
                 <div class="columns-item">
                     <!-- top -->
-                    <div class="item-thumb" style="background: white;"></div>
+                    <div class="item-thumb bg-green"></div>
 
                     <div class="item-desc">
                         <p>最讨厌的雨天</p>
@@ -81,9 +79,9 @@
                         <p>最讨厌的雨天</p>
                     </div>
 
-                    <div class="item-slant reverse-slant bg- "></div>
+                    <div class="item-slant reverse-slant bg-green"></div>
 
-                    <div class="item-slant ">
+                    <div class="item-slant">
                         <div class="liberxue-title">
                             音乐
                         </div>
@@ -94,18 +92,17 @@
                             <a href="html/rain.html">雨天-戚薇</a>
                         </div>
                         <div class="columns-item-bottom-time">
-                            <a data-hover="2017-07-30 10:06 ">2017-07-30 10:06</a>
+                            <a href="" data-hover="2017-07-30 10:06">2017-07-30 10:06</a>
                             <img src="img/music.png" />
                         </div>
                     </div>
 
                 </div>
             </div>
-
             <div class="col-sm-4 columns">
                 <div class="columns-item">
                     <!-- top -->
-                    <div class="item-thumb" style="background: white;"></div>
+                    <div class="item-thumb bg-orange"></div>
 
                     <div class="item-desc">
                         <p>最讨厌的雨天</p>
@@ -115,9 +112,9 @@
                         <p>最讨厌的雨天</p>
                     </div>
 
-                    <div class="item-slant reverse-slant bg- "></div>
+                    <div class="item-slant reverse-slant bg-orange"></div>
 
-                    <div class="item-slant ">
+                    <div class="item-slant">
                         <div class="liberxue-title">
                             音乐
                         </div>
@@ -128,7 +125,7 @@
                             <a href="html/rain.html">雨天-戚薇</a>
                         </div>
                         <div class="columns-item-bottom-time">
-                            <a data-hover="2017-07-30 10:06 ">2017-07-30 10:06</a>
+                            <a href="" data-hover="2017-07-30 10:06">2017-07-30 10:06</a>
                             <img src="img/music.png" />
                         </div>
                     </div>
@@ -136,45 +133,46 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <script src="js/jquery-3.3.1.js "></script>
-        <script src="js/bootstrap.js "></script>
-        <script>
-            $(function () {
-                autoPlayMusic();
-            })
+    <script src="js/jquery-3.3.1.js "></script>
+    <script src="js/bootstrap.js "></script>
+    <script>
+        $(function () {
+            autoPlayMusic();
+        })
 
-            function playMusic() {
-                var audio = document.getElementById("bg-music");
-                //播放
-                if (audio.paused) {
-                    $("#operaMusic").attr("src", "img/paused.svg");
-                    audio.play();
-                } else {
-                    $("#operaMusic").attr("src", "img/play.svg");
-                    audio.pause();
-                }
+        function playMusic() {
+            var audio = document.getElementById("bg-music");
+            //播放
+            if (audio.paused) {
+                $("#operaMusic").attr("src", "img/paused.svg");
+                audio.play();
+            } else {
+                $("#operaMusic").attr("src", "img/play.svg");
+                audio.pause();
             }
+        }
 
-            // 音乐播放
-            function autoPlayMusic() {
-                // 自动播放音乐效果，解决浏览器或者APP自动播放问题 
-                // document.body.addEventListener('touchstart', musicInBrowserHandler);
-                // function musicInBrowserHandler() {
-                //     document.getElementById("bg-music").play();
-                //     document.body.removeEventListener('touchstart', musicInBrowserHandler);
-                // }
+        // 音乐播放
+        function autoPlayMusic() {
+            // 自动播放音乐效果，解决浏览器或者APP自动播放问题 
+            // document.body.addEventListener('touchstart', musicInBrowserHandler);
+            // function musicInBrowserHandler() {
+            //     document.getElementById("bg-music").play();
+            //     document.body.removeEventListener('touchstart', musicInBrowserHandler);
+            // }
 
-                // 自动播放音乐效果，解决微信自动播放问题 
-                document.addEventListener("WeixinJSBridgeReady", musicInWeixinHandler);
+            // 自动播放音乐效果，解决微信自动播放问题 
+            document.addEventListener("WeixinJSBridgeReady", musicInWeixinHandler);
 
-                function musicInWeixinHandler() {
-                    document.getElementById("bg-music").play();
-                    $("#operaMusic").attr("src", "img/paused.svg");
-                    document.removeEventListener("WeixinJSBridgeReady", musicInWeixinHandler);
-                }
+            function musicInWeixinHandler() {
+                document.getElementById("bg-music").play();
+                $("#operaMusic").attr("src", "img/paused.svg");
+                document.removeEventListener("WeixinJSBridgeReady", musicInWeixinHandler);
             }
-        </script>
+        }
+    </script>
 
 </body>
 
