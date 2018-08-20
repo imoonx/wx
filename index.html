@@ -13,7 +13,7 @@
 
     <audio id="bg-music" src="music/であい-まつい_ようへい_ミト.mp3" hidden="true" autoplay></audio>
 
-    <div class="header bg-white" onclick="playMusic()">
+    <div class="header bg-white">
         <img src="img/header.jpg" />
         <svg id="ice-bear" xmlns="http://www.w3.org/2000/svg" version="1.1" width="80%" height="200%" viewBox="0 0 800 400">
             <g id="welcom-text" style="text-shadow: 1px 1px #EFEFEF, 2px 2px #ccc">
@@ -27,6 +27,8 @@
             </g>
         </svg>
     </div>
+
+    <img id="operaMusic" src="img/play.svg" style="position: fixed;right: 50px;z-index: 100;" onclick="playMusic()">
 
     <div class="container main-content" style="margin-top: 100px;">
 
@@ -137,8 +139,6 @@
 
         <script src="js/jquery-3.3.1.js "></script>
         <script src="js/bootstrap.js "></script>
-        <!-- weixin js sdk -->
-        <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
         <script>
             $(function () {
                 autoPlayMusic();
@@ -148,8 +148,10 @@
                 var audio = document.getElementById("bg-music");
                 //播放
                 if (audio.paused) {
+                    $("#operaMusic").attr("src", "img/paused.svg");
                     audio.play();
                 } else {
+                    $("#operaMusic").attr("src", "img/play.svg");
                     audio.pause();
                 }
             }
@@ -157,19 +159,18 @@
             // 音乐播放
             function autoPlayMusic() {
                 // 自动播放音乐效果，解决浏览器或者APP自动播放问题 
-                document.body.addEventListener('touchstart', musicInBrowserHandler);
-
-                function musicInBrowserHandler() {
-                    document.getElementById("bg-music").play();
-                    document.body.removeEventListener('touchstart', musicInBrowserHandler);
-                }
+                // document.body.addEventListener('touchstart', musicInBrowserHandler);
+                // function musicInBrowserHandler() {
+                //     document.getElementById("bg-music").play();
+                //     document.body.removeEventListener('touchstart', musicInBrowserHandler);
+                // }
 
                 // 自动播放音乐效果，解决微信自动播放问题 
                 document.addEventListener("WeixinJSBridgeReady", musicInWeixinHandler);
 
                 function musicInWeixinHandler() {
-                    document.getElementById("bg-music").play();
                     document.removeEventListener("WeixinJSBridgeReady", musicInWeixinHandler);
+                    document.getElementById("bg-music").play();
                 }
             }
         </script>
