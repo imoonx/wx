@@ -206,3 +206,9 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
 }
+
+#operaMusic {
+    position: fixed;
+    right: 50px;
+    z-index: 100;
+}

@@ -28,7 +28,7 @@
         </svg>
     </div>
 
-    <img id="operaMusic" src="img/play.svg" style="position: fixed;right: 50px;z-index: 100;" onclick="playMusic()">
+    <img id="operaMusic" src="img/play.svg" onclick="playMusic()">
 
     <div class="container main-content" style="margin-top: 100px;">
 
@@ -169,8 +169,9 @@
                 document.addEventListener("WeixinJSBridgeReady", musicInWeixinHandler);
 
                 function musicInWeixinHandler() {
-                    document.removeEventListener("WeixinJSBridgeReady", musicInWeixinHandler);
                     document.getElementById("bg-music").play();
+                    $("#operaMusic").attr("src", "img/paused.svg");
+                    document.removeEventListener("WeixinJSBridgeReady", musicInWeixinHandler);
                 }
             }
         </script>
