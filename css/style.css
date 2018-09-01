@@ -255,14 +255,14 @@
 }
 
 .columns-item .columns-item-bottom-time img {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     display: flex;
     border-radius: 50%;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    -webkit-animation: rotateImg 2s linear infinite;
+    /* -webkit-animation: rotateImg 2s linear infinite; */
     box-shadow: 0px 0px 10px #999;
     margin-left: 10px;
 }

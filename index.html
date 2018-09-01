@@ -11,7 +11,7 @@
 
 <body style="background: #f0f0f0">
 
-    <audio id="bg-music" src="music/であい-まつい_ようへい_ミト-201803.mp3" hidden="true" autoplay></audio>
+    <audio id="bg-music" src="music/であい-まつい_ようへい_ミト-201803.mp3" loop="loop" hidden="true" autoplay></audio>
 
     <div class="header bg-white">
         <img src="img/header.jpg" />
@@ -47,7 +47,6 @@
                     </div>
 
                     <div class="item-slant reverse-slant bg-white"></div>
-
                     <div class="item-slant">
                         <div class="liberxue-title">
                             音乐
@@ -56,11 +55,11 @@
                     <!-- bottom -->
                     <div class="columns-item-bottom">
                         <div class="columns-item-bottom-title">
-                            <a href="music.html?id=0" target="_blank">雨天-戚薇</a>
+                            <a href="music.html?id=0" class="href_music">雨天-戚薇</a>
                         </div>
                         <div class="columns-item-bottom-time">
-                            <a href="" data-hover="2017-07-30 10:06">2017-07-30 10:06</a>
-                            <img src="img/music.png" />
+                            <a href="javascript:volid(0);" data-hover="2017-07-30 10:06">2017-07-30 10:06</a>
+                            <img class="_music" />
                         </div>
                     </div>
 
@@ -92,8 +91,8 @@
                             <a href="html/rain.html">雨天-戚薇</a>
                         </div>
                         <div class="columns-item-bottom-time">
-                            <a href="" data-hover="2017-07-30 10:06">2017-07-30 10:06</a>
-                            <img src="img/music.png" />
+                            <a href="javascript:volid(0);" data-hover="2017-07-30 10:06">2017-07-30 10:06</a>
+                            <img class="_trip" />
                         </div>
                     </div>
 
@@ -126,7 +125,7 @@
                         </div>
                         <div class="columns-item-bottom-time">
                             <a href="" data-hover="2017-07-30 10:06">2017-07-30 10:06</a>
-                            <img src="img/music.png" />
+                            <img class="_article" />
                         </div>
                     </div>
 
@@ -137,10 +136,34 @@
 
     <script src="js/jquery-3.3.1.js "></script>
     <script src="js/bootstrap.js "></script>
+    <script src="js/style.js"></script>
     <script>
         $(function () {
+            console.log(isMobile.any());
+            if (!isMobile.any()) {
+                $(".href_music").attr("target", "_blank");
+            }
             autoPlayMusic();
         })
+
+        // 判断是否是移动设备
+        var isMobile = {
+            Android: function () {
+                return navigator.userAgent.match(/Android/i) ? true : false;
+            },
+            BlackBerry: function () {
+                return navigator.userAgent.match(/BlackBerry/i) ? true : false;
+            },
+            iOS: function () {
+                return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false;
+            },
+            Windows: function () {
+                return navigator.userAgent.match(/IEMobile/i) ? true : false;
+            },
+            any: function () {
+                return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());
+            }
+        };
 
         function playMusic() {
             var audio = document.getElementById("bg-music");
