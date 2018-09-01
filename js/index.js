@@ -6,6 +6,10 @@ $(function () {
 
     initWeChat();
 
+    if (!isMobile.any()) {
+        $(".href_music").attr("target", "_blank");
+    }
+
     $(".btn-play").click(function () {
         pauseIndex();
     });

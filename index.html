@@ -141,56 +141,6 @@
     <script src="js/player.js"></script>
     <script src="js/index.js"></script>
 
-    <!-- <script>
-        var audio;
-
-        $(function () {
-            if (!isMobile.any()) {
-                $(".href_music").attr("target", "_blank");
-            }
-            audio = document.getElementById("bg-music");
-            audio.addEventListener('play', playMusic); // 开始播放了
-            audio.addEventListener('pause', pauseMusic); // 暂停
-            autoPlayMusic();
-            var userAgent = navigator.userAgent;
-            if (userAgent.indexOf("Firefox") > -1 || userAgent.indexOf("Edge") > -1) {
-                $(".music_play").addClass("music_pause");
-            }
-        })
-
-        //播放暂停
-        function playMusic() {
-            console.log("playMusic");
-            $(".music_play").addClass("music_pause");
-        }
-
-        //暂停
-        function pauseMusic() {
-            console.log("pauseMusic");
-            $(".music_play").removeClass("music_pause");
-        }
-
-        function play() {
-            //播放
-            if (audio.paused) {
-                audio.play();
-            } else {
-                audio.pause();
-            }
-        }
-
-        // 音乐播放
-        function autoPlayMusic() {
-            // 自动播放音乐效果，解决微信自动播放问题 
-            document.addEventListener("WeixinJSBridgeReady", musicInWeixinHandler);
-
-            function musicInWeixinHandler() {
-                document.getElementById("bg-music").play();
-                document.removeEventListener("WeixinJSBridgeReady", musicInWeixinHandler);
-            }
-        }
-    </script> -->
-
 </body>
 
 </html>
