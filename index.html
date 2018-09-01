@@ -12,7 +12,7 @@
 
 <body style="background: #f0f0f0">
 
-    <audio id="bg-music" src="music/であい-まつい_ようへい_ミト-201803.mp3" loop="loop" hidden="true" autoplay></audio>
+    <!-- <audio id="bg-music" src="music/であい-まつい_ようへい_ミト-201803.mp3" loop="loop" hidden="true" autoplay></audio> -->
 
     <div class="header bg-white">
         <img src="img/header.jpg" />
@@ -29,7 +29,7 @@
         </svg>
     </div>
 
-    <div class="music_play" onclick="play()"></div>
+    <div class="btn-play"></div>
 
     <div class="container content">
 
@@ -138,7 +138,10 @@
     <script src="js/jquery-3.3.1.js "></script>
     <script src="js/bootstrap.js "></script>
     <script src="js/style.js"></script>
-    <script>
+    <script src="js/player.js"></script>
+    <script src="js/index.js"></script>
+
+    <!-- <script>
         var audio;
 
         $(function () {
@@ -186,7 +189,7 @@
                 document.removeEventListener("WeixinJSBridgeReady", musicInWeixinHandler);
             }
         }
-    </script>
+    </script> -->
 
 </body>
 

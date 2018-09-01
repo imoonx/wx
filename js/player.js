@@ -37,8 +37,7 @@ function audioErr() {
 }
 
 //进度更新
-function updateProgress() {
-}
+function updateProgress() {}
 
 //静音切换
 function quietMusic(mute) {
@@ -125,6 +124,22 @@ function play(music) {
     changeCover(music); // 更新封面展示
 }
 
+//音乐播放 通过音乐路径
+function playByUrl(url) {
+    // 遇到错误播放下一首歌
+    if (url == "err") {
+        return false;
+    }
+
+    try {
+        rem.audio[0].pause();
+        rem.audio.attr('src', url);
+        rem.audio[0].play();
+    } catch (e) {
+        return;
+    }
+}
+
 // 点击暂停按钮的事件
 function pause() {
     // 第一次点播放
@@ -150,4 +165,14 @@ function playList(id) {
 
     rem.musicId = id;
     play(musicList[0].item[id]);
+}
+
+//初始化微信 自动播放
+function initWeChat() {
+    document.addEventListener("WeixinJSBridgeReady", musicInWeixinHandler);
+}
+
+function musicInWeixinHandler() {
+    rem.audio[0].play();
+    document.removeEventListener("WeixinJSBridgeReady", musicInWeixinHandler);
 }

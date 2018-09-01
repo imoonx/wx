@@ -45,13 +45,3 @@ function changeCover(music) {
     $(".music-info").html("");
     $(".music-info").append(html);
 }
-
-//初始化微信 自动播放
-function initWeChat() {
-    document.addEventListener("WeixinJSBridgeReady", musicInWeixinHandler);
-}
-
-function musicInWeixinHandler() {
-    rem.audio[0].play();
-    document.removeEventListener("WeixinJSBridgeReady", musicInWeixinHandler);
-}
