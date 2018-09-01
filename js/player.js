@@ -18,13 +18,11 @@ function prevMusic() {
 
 //播放暂停
 function playMusic() {
-
+    
 }
 
 //下一首
-function nextMusic() {
-
-}
+function nextMusic() {}
 
 //静音切换
 function quietMusic(mute) {
@@ -39,7 +37,15 @@ function quietMusic(mute) {
 
 //初始化播放器
 function initAudio() {
-    rem.audio = $('<audio></audio>').appendTo('body');
+    rem.audio = $('<audio autoplay></audio>').appendTo('body');
+    // 应用初始音量
+    rem.audio[0].volume = volume_bar.percent;
+    // 绑定歌曲进度变化事件
+    rem.audio[0].addEventListener('timeupdate', updateProgress); // 更新进度
+    rem.audio[0].addEventListener('play', audioPlay); // 开始播放了
+    rem.audio[0].addEventListener('pause', audioPause); // 暂停
+    $(rem.audio[0]).on('ended', autoNextMusic); // 播放结束
+    rem.audio[0].addEventListener('error', audioErr); // 播放器错误处理
 };
 
 //初始化顶部文字

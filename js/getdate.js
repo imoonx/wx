@@ -9,9 +9,17 @@ $(function () {
         return;
     console.log(music);
     initCover(music);
+    initMusicInfo(music);
+    initAudio();
 })
 
 function initCover(music) {
     $(".bg").attr("src", music.pic);
     $(".cover").attr("src", music.pic);
+}
+
+function initMusicInfo(music) {
+    var html = '<div>' + music.name + '</div>' +
+        '<div>' + music.artist + '</div>';
+    $(".music-info").append(html);
 }
