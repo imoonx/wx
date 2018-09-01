@@ -84,6 +84,14 @@ body {
     background: url("../img/music/play-hover.svg")
 }
 
+.btn-state-paused {
+    background: url("../img/music/paused.svg")
+}
+
+.btn-state-paused:hover {
+    background: url("../img/music/paused-hover.svg")
+}
+
 .btn-next {
     background: url("../img/music/next.svg")
 }

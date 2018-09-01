@@ -8,21 +8,44 @@
 var rem = [];
 //音量值
 var vol;
-//当前音乐id
-var platId;
 
 //上一首
 function prevMusic() {
-
+    console.log("prevMusic");
+    playList(rem.musicId - 1);
 }
 
 //播放暂停
 function playMusic() {
-    
+    console.log("playMusic");
+    rem.paused = false;
+    $(".btn-play").addClass("btn-state-paused");
+}
+
+//暂停
+function pauseMusic() {
+    console.log("pauseMusic");
+    rem.paused = true;
+    $(".btn-play").removeClass("btn-state-paused");
 }
 
 //下一首
-function nextMusic() {}
+function nextMusic() {
+    console.log("nextMusic");
+    console.log("musicId=" + rem.musicId);
+    playList(rem.musicId + 1);
+}
+
+//错误监听
+function audioErr() {
+    console.log("audioErr");
+    nextMusic();
+}
+
+//进度更新
+function updateProgress() {
+    console.log("updateProgress");
+}
 
 //静音切换
 function quietMusic(mute) {
@@ -39,14 +62,16 @@ function quietMusic(mute) {
 function initAudio() {
     rem.audio = $('<audio autoplay></audio>').appendTo('body');
     // 应用初始音量
-    rem.audio[0].volume = volume_bar.percent;
+    if (rem.isNeedVolume) {
+        rem.audio[0].volume = volume_bar.percent;
+    }
     // 绑定歌曲进度变化事件
     rem.audio[0].addEventListener('timeupdate', updateProgress); // 更新进度
-    rem.audio[0].addEventListener('play', audioPlay); // 开始播放了
-    rem.audio[0].addEventListener('pause', audioPause); // 暂停
-    $(rem.audio[0]).on('ended', autoNextMusic); // 播放结束
+    rem.audio[0].addEventListener('play', playMusic); // 开始播放了
+    rem.audio[0].addEventListener('pause', pauseMusic); // 暂停
+    $(rem.audio[0]).on('ended', nextMusic); // 播放结束
     rem.audio[0].addEventListener('error', audioErr); // 播放器错误处理
-};
+}
 
 //初始化顶部文字
 function initListHeader() {
@@ -79,4 +104,70 @@ function addItem(music) {
         '    <span class="auth-name" id="auth-name">' + music.artist + '</span>' +
         '</div>';
     rem.musicList.append(html);
+}
+
+//音乐播放
+function play(music) {
+
+    console.info('id: "' + music.id + '",\n' +
+        'name: "' + music.name + '",\n' +
+        'artist: "' + music.artist + '",\n' +
+        'album: "' + music.album + '",\n' +
+        'source: "' + music.source + '",\n' +
+        'url_id: "' + music.url_id + '",\n' +
+        'pic_id: "' + music.pic_id + '",\n' +
+        'lyric_id: "' + music.lyric_id + '",\n' +
+        'pic: "' + music.pic + '",\n' +
+        'url: "' + music.url + '"');
+
+    // 遇到错误播放下一首歌
+    if (music.url == "err") {
+        audioErr(); // 调用错误处理函数
+        return false;
+    }
+    try {
+        rem.audio[0].pause();
+        rem.audio.attr('src', music.url);
+        rem.audio[0].play();
+        document.title = music.name;
+    } catch (e) {
+        audioErr(); // 调用错误处理函数
+        return;
+    }
+    if (rem.isNeedVolume) {
+        rem.errCount = 0; // 连续播放失败的歌曲数归零
+        music_bar.goto(0); // 进度条强制归零
+        music_bar.lock(false); // 取消进度条锁定
+    }
+
+    changeCover(music); // 更新封面展示
+}
+
+// 点击暂停按钮的事件
+function pause() {
+    // 第一次点播放
+    if (rem.paused === undefined) {
+        playList(rem.musicId);
+        return;
+    }
+    if (rem.paused === false) { // 之前是播放状态
+        console.log("暂停");
+        rem.audio[0].pause(); // 
+    } else {
+        console.log("播放");
+        rem.audio[0].play();
+    }
+}
+
+// 播放正在播放列表中的歌曲
+// 参数：歌曲在列表中的ID
+function playList(id) {
+    // 没有歌曲，跳出
+    if (musicList[0].item.length <= 0) return true;
+    // ID 范围限定
+    if (id >= musicList[0].item.length) id = 0;
+    if (id < 0) id = musicList[0].item.length - 1;
+
+    rem.musicId = id;
+    play(musicList[0].item[id]);
 }

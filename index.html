@@ -28,7 +28,7 @@
         </svg>
     </div>
 
-    <img id="operaMusic" src="img/play.svg" onclick="playMusic()">
+    <div class="music_play" onclick="play()"></div>
 
     <div class="container content">
 
@@ -88,7 +88,7 @@
                     <!-- bottom -->
                     <div class="columns-item-bottom">
                         <div class="columns-item-bottom-title">
-                            <a href="html/rain.html">雨天-戚薇</a>
+                            <a href="music.html?id=1" class="href_music">遇见-张瑶</a>
                         </div>
                         <div class="columns-item-bottom-time">
                             <a href="javascript:volid(0);" data-hover="2017-07-30 10:06">2017-07-30 10:06</a>
@@ -121,10 +121,10 @@
                     <!-- bottom -->
                     <div class="columns-item-bottom">
                         <div class="columns-item-bottom-title">
-                            <a href="html/rain.html">雨天-戚薇</a>
+                            <a href="html/rain.html">遇见-张瑶</a>
                         </div>
                         <div class="columns-item-bottom-time">
-                            <a href="" data-hover="2017-07-30 10:06">2017-07-30 10:06</a>
+                            <a href="music.html?id=2" data-hover="2017-07-30 10:06">2017-07-30 10:06</a>
                             <img class="_article" />
                         </div>
                     </div>
@@ -138,41 +138,39 @@
     <script src="js/bootstrap.js "></script>
     <script src="js/style.js"></script>
     <script>
+        var audio;
+
         $(function () {
-            console.log(isMobile.any());
             if (!isMobile.any()) {
                 $(".href_music").attr("target", "_blank");
             }
+            audio = document.getElementById("bg-music");
+            audio.addEventListener('play', playMusic); // 开始播放了
+            audio.addEventListener('pause', pauseMusic); // 暂停
             autoPlayMusic();
+            var userAgent = navigator.userAgent;
+            if (userAgent.indexOf("Firefox") > -1 || userAgent.indexOf("Edge") > -1) {
+                $(".music_play").addClass("music_pause");
+            }
         })
 
-        // 判断是否是移动设备
-        var isMobile = {
-            Android: function () {
-                return navigator.userAgent.match(/Android/i) ? true : false;
-            },
-            BlackBerry: function () {
-                return navigator.userAgent.match(/BlackBerry/i) ? true : false;
-            },
-            iOS: function () {
-                return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false;
-            },
-            Windows: function () {
-                return navigator.userAgent.match(/IEMobile/i) ? true : false;
-            },
-            any: function () {
-                return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());
-            }
-        };
-
+        //播放暂停
         function playMusic() {
-            var audio = document.getElementById("bg-music");
+            console.log("playMusic");
+            $(".music_play").addClass("music_pause");
+        }
+
+        //暂停
+        function pauseMusic() {
+            console.log("pauseMusic");
+            $(".music_play").removeClass("music_pause");
+        }
+
+        function play() {
             //播放
             if (audio.paused) {
-                $("#operaMusic").attr("src", "img/paused.svg");
                 audio.play();
             } else {
-                $("#operaMusic").attr("src", "img/play.svg");
                 audio.pause();
             }
         }
@@ -191,7 +189,7 @@
 
             function musicInWeixinHandler() {
                 document.getElementById("bg-music").play();
-                $("#operaMusic").attr("src", "img/paused.svg");
+                // $("#operaMusic").attr("src", "img/paused.svg");
                 document.removeEventListener("WeixinJSBridgeReady", musicInWeixinHandler);
             }
         }

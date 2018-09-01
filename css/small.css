@@ -42,6 +42,10 @@
     .btn-next {
         background: url("../img/music/next-hover.svg")
     }
+
+    .btn-state-paused {
+        background: url("../img/music/paused-hover.svg")
+    }
 }
 
 @media screen and (max-width: 920px) {
