@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1.0,user-scalable=no">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/small.css">
     <title>xuan | imoonx.com</title>
 </head>
 
@@ -177,19 +178,11 @@
 
         // 音乐播放
         function autoPlayMusic() {
-            // 自动播放音乐效果，解决浏览器或者APP自动播放问题 
-            // document.body.addEventListener('touchstart', musicInBrowserHandler);
-            // function musicInBrowserHandler() {
-            //     document.getElementById("bg-music").play();
-            //     document.body.removeEventListener('touchstart', musicInBrowserHandler);
-            // }
-
             // 自动播放音乐效果，解决微信自动播放问题 
             document.addEventListener("WeixinJSBridgeReady", musicInWeixinHandler);
 
             function musicInWeixinHandler() {
                 document.getElementById("bg-music").play();
-                // $("#operaMusic").attr("src", "img/paused.svg");
                 document.removeEventListener("WeixinJSBridgeReady", musicInWeixinHandler);
             }
         }

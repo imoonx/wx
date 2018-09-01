@@ -11,40 +11,33 @@ var vol;
 
 //上一首
 function prevMusic() {
-    console.log("prevMusic");
     playList(rem.musicId - 1);
 }
 
 //播放暂停
 function playMusic() {
-    console.log("playMusic");
     rem.paused = false;
     $(".btn-play").addClass("btn-state-paused");
 }
 
 //暂停
 function pauseMusic() {
-    console.log("pauseMusic");
     rem.paused = true;
     $(".btn-play").removeClass("btn-state-paused");
 }
 
 //下一首
 function nextMusic() {
-    console.log("nextMusic");
-    console.log("musicId=" + rem.musicId);
     playList(rem.musicId + 1);
 }
 
 //错误监听
 function audioErr() {
-    console.log("audioErr");
     nextMusic();
 }
 
 //进度更新
 function updateProgress() {
-    console.log("updateProgress");
 }
 
 //静音切换
@@ -109,17 +102,6 @@ function addItem(music) {
 //音乐播放
 function play(music) {
 
-    console.info('id: "' + music.id + '",\n' +
-        'name: "' + music.name + '",\n' +
-        'artist: "' + music.artist + '",\n' +
-        'album: "' + music.album + '",\n' +
-        'source: "' + music.source + '",\n' +
-        'url_id: "' + music.url_id + '",\n' +
-        'pic_id: "' + music.pic_id + '",\n' +
-        'lyric_id: "' + music.lyric_id + '",\n' +
-        'pic: "' + music.pic + '",\n' +
-        'url: "' + music.url + '"');
-
     // 遇到错误播放下一首歌
     if (music.url == "err") {
         audioErr(); // 调用错误处理函数
@@ -151,10 +133,8 @@ function pause() {
         return;
     }
     if (rem.paused === false) { // 之前是播放状态
-        console.log("暂停");
         rem.audio[0].pause(); // 
     } else {
-        console.log("播放");
         rem.audio[0].play();
     }
 }
