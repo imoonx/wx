@@ -42,6 +42,7 @@ function changeCover(music) {
     $(".cover").attr("src", music.pic);
     var html = '<div>' + music.name + '</div>' +
         '<div>' + music.artist + '</div>';
+
     $(".music-info").html("");
     $(".music-info").append(html);
 }

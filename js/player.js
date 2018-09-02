@@ -37,7 +37,12 @@ function audioErr() {
 }
 
 //进度更新
-function updateProgress() {}
+function updateProgress() {
+    // 暂停状态不管
+    if (rem.paused !== false) return true;
+    // 同步歌词显示	
+    scrollLyric(rem.audio[0].currentTime);
+}
 
 //静音切换
 function quietMusic(mute) {
@@ -110,6 +115,7 @@ function play(music) {
         rem.audio[0].pause();
         rem.audio.attr('src', music.url);
         rem.audio[0].play();
+        ajaxLyric(music.lryic, lyricCallback);
         document.title = music.name;
     } catch (e) {
         audioErr(); // 调用错误处理函数

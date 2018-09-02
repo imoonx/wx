@@ -128,3 +128,8 @@ body {
 .music-btn a {
     margin-left: 15%;
 }
+
+/* 正在播放的那一句歌词 */
+.lplaying {
+    color: #31c27c;
+}
