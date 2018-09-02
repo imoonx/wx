@@ -8,16 +8,17 @@ function ajaxLyric(lyricUrl, callback) {
         dataType: "text", //返回数据格式为json
         success: function (jsonData) {
             console.debug("歌词获取成功");
+            alert("歌词获取成功" + jsonData);
             if (jsonData) {
                 callback(jsonData); // 回调函数
             } else {
-                callback('', ); // 回调函数
+                callback(''); // 回调函数
             }
         }, //success
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-            layer.msg('歌词读取失败 - ' + XMLHttpRequest.status);
+            alert('歌词读取失败 - ' + XMLHttpRequest.status);
             // console.error(XMLHttpRequest + textStatus + errorThrown);
-            // callback('', music.lyric_id); // 回调函数
+            callback(''); // 回调函数
         } // error   
     }); //ajax
 }
@@ -26,14 +27,9 @@ function ajaxLyric(lyricUrl, callback) {
 // 参数：歌词源文件
 function lyricCallback(str) {
 
-    // if(id !== musicList[rem.playlist].item[rem.playid].id) return;  // 返回的歌词不是当前这首歌的，跳过
-
     rem.lyric = parseLyric(str); // 解析获取到的歌词
 
-    console.log(rem.lyric);
-
     if (rem.lyric === '') {
-        lyricTip('没有歌词');
         return false;
     }
 
@@ -79,7 +75,7 @@ function parseLyric(lrc) {
 // 滚动歌词到指定句
 // 参数：当前播放时间（单位：秒）
 function scrollLyric(time) {
-    console.log(time);
+    // console.log(time);
     if (rem.lyric === '') return false;
 
     time = parseInt(time); // 时间取整
