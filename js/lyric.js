@@ -95,7 +95,7 @@ function scrollLyric(time) {
     $(".lplaying").removeClass("lplaying"); // 移除其余句子的正在播放样式
     $(".lrc-item[data-no='" + i + "']").addClass("lplaying"); // 加上正在播放样式
 
-    var scroll = $(".music-info").children().height() * (i + 0.4) - ($(".music-info").height() / 2)
+    var scroll = $(".music-info").children().height() * i - ($(".music-info").height() / 5)
     $(".music-info").stop().animate({
         scrollTop: scroll
     }, 500); // 平滑滚动到当前歌词位置(更改这个数值可以改变歌词滚动速度，单位：毫秒)
