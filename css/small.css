@@ -12,7 +12,7 @@
     }
 
     .music-btn {
-        top: 80%;
+        top: 85%;
         left: 20%;
         width: 60%;
         height: 80px;
@@ -60,22 +60,6 @@
         z-index: 5;
     }
 
-    .music-btn {
-        top: 80%;
-        left: 20%;
-        width: 60%;
-        height: 80px;
-        z-index: 5;
-        display: -webkit-box;
-        text-align: center;
-        position: absolute;
-        -webkit-box-align: center;
-    }
-
-    .music-btn a {
-        margin-left: 20%;
-    }
-
     .music-info {
         font-size: 26px;
     }
@@ -94,20 +78,8 @@
         z-index: 5;
     }
 
-    .music-btn {
-        top: 80%;
-        left: 25%;
-        width: 50%;
-        height: 50px;
-        z-index: 5;
-        display: -webkit-box;
-        text-align: center;
-        position: absolute;
-        -webkit-box-align: center;
-    }
-
     .music-btn a {
-        margin-left: 8%;
+        margin-left: 12%;
     }
 
     .music-info {

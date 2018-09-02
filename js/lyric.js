@@ -98,6 +98,6 @@ function scrollLyric(time) {
     var scroll = ($(".music-info").children().height() * i) - ($(".music-info").height() / 2);
     $(".music-info").stop().animate({
         scrollTop: scroll
-    }, 1000); // 平滑滚动到当前歌词位置(更改这个数值可以改变歌词滚动速度，单位：毫秒)
+    }, 500); // 平滑滚动到当前歌词位置(更改这个数值可以改变歌词滚动速度，单位：毫秒)
 
 }

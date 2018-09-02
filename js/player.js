@@ -112,10 +112,10 @@ function play(music) {
         return false;
     }
     try {
+        ajaxLyric(music.lryic, lyricCallback);
         rem.audio[0].pause();
         rem.audio.attr('src', music.url);
         rem.audio[0].play();
-        ajaxLyric(music.lryic, lyricCallback);
         document.title = music.name;
     } catch (e) {
         audioErr(); // 调用错误处理函数
