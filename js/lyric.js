@@ -1,14 +1,12 @@
 // ajax加载歌词
 // 参数：音乐ID，回调函数
 function ajaxLyric(lyricUrl, callback) {
-    // if (!lyricUrl) callback(''); // 没有歌词ID，直接返回
+    if (lyricUrl === undefined) callback(''); // 没有歌词ID，直接返回
     $.ajax({
         type: "GET",
         url: lyricUrl,
         dataType: "text", //返回数据格式为json
         success: function (jsonData) {
-            console.debug("歌词获取成功");
-            alert("歌词获取成功" + jsonData);
             if (jsonData) {
                 callback(jsonData); // 回调函数
             } else {
@@ -16,10 +14,8 @@ function ajaxLyric(lyricUrl, callback) {
             }
         }, //success
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert('歌词读取失败 - ' + XMLHttpRequest.status);
-            // console.error(XMLHttpRequest + textStatus + errorThrown);
             callback(''); // 回调函数
-        } // error   
+        }
     }); //ajax
 }
 
