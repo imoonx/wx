@@ -1,5 +1,19 @@
 @charset 'UTF-8';
 
+html,
+body {
+    margin: 0;
+    padding: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    /*禁止双击选定*/
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 .bg-blue {
     background-color: #6fa3ef !important;
 }
