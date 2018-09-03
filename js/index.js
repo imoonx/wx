@@ -43,7 +43,6 @@ function initDate() {
         }
         html = html + '</div>';
     }
-    console.log(html);
     $(".content").append(html);
 }
 
