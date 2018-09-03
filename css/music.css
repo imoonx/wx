@@ -152,6 +152,14 @@ li {
     background: url("../img/music/next-hover.svg")
 }
 
+.btn-state-paused {
+    background: url("../img/music/paused.svg")
+}
+
+.btn-state-paused:hover {
+    background: url("../img/music/paused-hover.svg")
+}
+
 .music-progress {
     width: 58%;
     height: 10px;
