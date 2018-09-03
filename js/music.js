@@ -31,7 +31,6 @@ $(function () {
     $(".btn-next").click(function () {
         nextMusic();
     });
-    changeCover(music);
     playList(rem.musicId);
 })
 
