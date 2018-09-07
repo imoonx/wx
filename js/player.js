@@ -112,7 +112,7 @@ function play(music) {
         return false;
     }
     try {
-        if (music.lyric !== undefined)
+        if (music.lryic !== undefined)
             ajaxLyric(music.lryic, lyricCallback);
         rem.audio[0].pause();
         rem.audio.attr('src', music.url);
