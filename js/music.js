@@ -9,8 +9,7 @@ $(function () {
     var music = musicList[0].item[a];
     if (music === undefined)
         return;
-
-    rem.musicId = Number(a);
+        
     rem.isNeedVolume = false;
 
     initAudio();
@@ -31,7 +30,7 @@ $(function () {
     $(".btn-next").click(function () {
         nextMusic();
     });
-    playList(rem.musicId);
+    playList(Number(a));
 })
 
 //初始化封面 初始化音乐信息

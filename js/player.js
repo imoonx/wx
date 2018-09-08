@@ -95,7 +95,7 @@ function initMusicList() {
 // 列表中新增一项
 // 参数：编号、名字、歌手
 function addItem(music) {
-    var html = '<div class="list-item">' +
+    var html = '<div class="list-item" data-no="' + music.id + '">' +
         '    <span class="list-num">' + music.id + '</span>' +
         '    <span class="music-name" id="music-name">' + music.name + '</span>' +
         '    <span class="auth-name" id="auth-name">' + music.artist + '</span>' +
@@ -105,30 +105,30 @@ function addItem(music) {
 
 //音乐播放
 function play(music) {
-
     // 遇到错误播放下一首歌
     if (music.url == "err") {
         audioErr(); // 调用错误处理函数
         return false;
     }
+
     try {
         if (music.lryic !== undefined)
             ajaxLyric(music.lryic, lyricCallback);
         rem.audio[0].pause();
         rem.audio.attr('src', music.url);
         rem.audio[0].play();
+        changeCover(music); // 更新封面展示
         document.title = music.name;
     } catch (e) {
         audioErr(); // 调用错误处理函数
         return;
     }
+
     if (rem.isNeedVolume) {
         rem.errCount = 0; // 连续播放失败的歌曲数归零
         music_bar.goto(0); // 进度条强制归零
         music_bar.lock(false); // 取消进度条锁定
     }
-
-    changeCover(music); // 更新封面展示
 }
 
 //音乐播放 通过音乐路径
@@ -206,22 +206,25 @@ var isMobile = {
 // ajax加载歌词
 // 参数：音乐ID，回调函数
 function ajaxLyric(lyricUrl, callback) {
+    console.log(lyricUrl);
     if (lyricUrl === undefined) callback(''); // 没有歌词ID，直接返回
     $.ajax({
         type: "GET",
         url: lyricUrl,
-        dataType: "text", //返回数据格式为json
-        success: function (jsonData) {
-            if (jsonData) {
-                callback(jsonData); // 回调函数
+        dataType: "text", //返回数据格式为text
+        success: function (textData) {
+            if (textData) {
+                callback(textData); // 回调函数
             } else {
                 callback(''); // 回调函数
             }
         }, //success
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
+        error: function (XMLhttpServlet, textStatus, errorThrown) {
+            console.log("readystate->" + XMLhttpServlet.readyState);
+            console.log.logrt("status->" + XMLhttpServlet.status);
             callback(''); // 回调函数
-        }
-    }); //ajax
+        } //error
+    });
 }
 
 // 歌曲加载完后的回调函数
