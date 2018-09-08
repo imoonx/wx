@@ -38,9 +38,9 @@ function changeCover(music) {
     // 更新封面展示 
     $(".bg").attr("src", music.pic);
     $(".cover").attr("src", music.pic);
-    var html = '<div>' + music.name + '</div>' +
-        '<div>' + music.artist + '</div>';
+    // var html = '<div>' + music.name + '</div>' +
+    //     '<div>' + music.artist + '</div>';
 
-    $(".music-info").html("");
-    $(".music-info").append(html);
+    // $(".music-info").html("");
+    // $(".music-info").append(html);
 }

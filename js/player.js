@@ -112,7 +112,12 @@ function play(music) {
     }
 
     try {
-        if (music.lryic !== undefined)
+        if (music.lryic === undefined) {
+            var html = '<div>' + music.name + '</div>' +
+                '<div>' + music.artist + '</div>';
+            $(".music-info").html("");
+            $(".music-info").append(html);
+        } else
             ajaxLyric(music.lryic, lyricCallback);
         rem.audio[0].pause();
         rem.audio.attr('src', music.url);
