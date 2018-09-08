@@ -206,7 +206,6 @@ var isMobile = {
 // ajax加载歌词
 // 参数：音乐ID，回调函数
 function ajaxLyric(lyricUrl, callback) {
-    console.log(lyricUrl);
     if (lyricUrl === undefined) callback(''); // 没有歌词ID，直接返回
     $.ajax({
         type: "GET",
@@ -220,8 +219,6 @@ function ajaxLyric(lyricUrl, callback) {
             }
         }, //success
         error: function (XMLhttpServlet, textStatus, errorThrown) {
-            console.log("readystate->" + XMLhttpServlet.readyState);
-            console.log.logrt("status->" + XMLhttpServlet.status);
             callback(''); // 回调函数
         } //error
     });
@@ -255,7 +252,6 @@ function lyricCallback(str) {
 function parseLyric(lrc) {
     if (lrc === '') return '';
     var lyrics = lrc.split("\n");
-    // console.log(lyrics);
     var lrcObj = {};
     for (var i = 0; i < lyrics.length; i++) {
         var lyric = decodeURIComponent(lyrics[i]);
@@ -268,7 +264,6 @@ function parseLyric(lrc) {
             var min = Number(String(t.match(/\[\d*/i)).slice(1)),
                 sec = Number(String(t.match(/\:\d*/i)).slice(1));
             var time = min * 60 + sec;
-            // console.log(time);
             lrcObj[time] = clause;
         }
     }
@@ -278,7 +273,6 @@ function parseLyric(lrc) {
 // 滚动歌词到指定句
 // 参数：当前播放时间（单位：秒）
 function scrollLyric(time) {
-    // console.log(time);
     if (rem.lyric === '') return false;
 
     time = parseInt(time); // 时间取整

@@ -107,6 +107,10 @@ li {
     height: 60%;
     margin: 0 auto;
     margin-top: 5%;
+    overflow-y: hidden;
+    text-align: center;
+    color: white;
+    font-size: 16px;
 }
 
 .music-progress {
