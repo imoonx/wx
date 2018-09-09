@@ -1,0 +1,7 @@
+npm install -g gulp
+1.css压缩 　　gulp-clean-css
+2.js压缩　　　gulp-uglify
+3.js合并　　　gulp-concat　　
+由于压缩之前需要对js代码进行代码检测，压缩完成之后需要加上min的后缀，我们还需要安装另外两个插件：
+4.重命名　　   gulp-rename
+5.js代码检测　 gulp-jshint　(或gulp-jslint)

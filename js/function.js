@@ -30,7 +30,7 @@ $(function () {
 
     // 移动端列表项单击播放
     $(".music-list").on("click", ".list-item", function () {
-        if (isMobile) {
+        if (isMobile.any()) {
             var num = parseInt($(this).data("no")) - 1;
             console.log(num);
             if (isNaN(num)) return false;

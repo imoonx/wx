@@ -16,7 +16,6 @@ $(function () {
         pauseIndex();
     });
 
-
     initArgs();
 
     playByUrl(indexList.bgMusic);
@@ -72,4 +71,11 @@ function initArgs() {
     $("._video").attr("src", "img/video.svg");
     $("._trip").attr("src", "img/trip.svg");
     $("._article").attr("src", "img/article.svg");
+}
+
+function headClick() {
+    if (isMobile.any())
+        window.location.href = "html/musicList.html";
+    else
+        window.open("html/musicList.html");
 }
