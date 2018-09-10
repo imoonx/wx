@@ -1,14 +1,32 @@
-:: åˆå§‹åŒ–ç”Ÿæˆpackage.json
+echo ¿ªÊ¼Ö´ĞĞ
+
+echo ³õÊ¼»¯Éú³Épackage.json
 call npm init
-:: å®‰è£…å…¨å±€gulp
+
+echo °²×°È«¾Ögulp
 call npm install -g gulp
-:: csså‹ç¼©æ’ä»¶
+
+echo °²×°cssÑ¹Ëõ²å¼ş
 call npm install gulp-clean-css --save-dev
-:: jså‹ç¼©æ’ä»¶
+
+echo °²×°jsÑ¹Ëõ²å¼ş
+
 call npm install gulp-uglify --save-dev
-:: jsåˆå¹¶æ’ä»¶
+
+echo °²×°jsºÏ²¢²å¼ş
+
 call npm install gulp-concat --save-dev
-:: é‡å‘½åæ’ä»¶
+
+echo °²×°ÖØÃüÃû²å¼ş
+
 call npm install  gulp-rename --save-dev
-:: jsä»£ç æ’ä»¶
+
+echo °²×°js´úÂë¼ì²â²å¼ş
+
 call npm install gulp-jshint --save-dev
+
+
+echo Ö´ĞĞÍê³É£¬°´ÈÎÒâ¼ü½áÊø
+pause
+
+exit
